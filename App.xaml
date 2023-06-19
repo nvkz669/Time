@@ -1,0 +1,160 @@
+﻿<Application
+    x:Class="TiMonSys.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="MyFontFamily">Segoe UI, Arial, Tahoma</FontFamily>
+
+
+        <Brush x:Key="ColorGroupingHeader">#FF9BFFB2</Brush>
+
+        <Style x:Key="MyComboBox" TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="{StaticResource MyFontFamily}" />
+            <Setter Property="Margin" Value="1,1,2,2" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5,1" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        </Style>
+
+        <Style x:Key="FormattedDataGrid" TargetType="DataGrid">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="IsReadOnly" Value="true" />
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="ColumnWidth" Value="Auto" />
+            <Setter Property="GridLinesVisibility" Value="All" />
+            <Setter Property="HorizontalGridLinesBrush" Value="Transparent" />
+            <Setter Property="AlternationCount" Value="2" />
+            <Setter Property="AlternatingRowBackground" Value="#BFF0F0F0" />
+            <Setter Property="VerticalGridLinesBrush" Value="#BFF0F0F0" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource FormatedDataGridColumnHeader}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style x:Key="gridCellsNumberRight" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Padding" Value="5,0,5,0" />
+        </Style>
+
+        <Style x:Key="gridCellsNumberCenter" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="0,0,5,0" />
+        </Style>
+
+        <Style x:Key="FormatedDataGridColumnHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="FormattedButton" TargetType="Button">
+            <Setter Property="Margin" Value="1,3,1,3" />
+            <Setter Property="MinHeight" Value="22" />
+            <Setter Property="Padding" Value="3,1,3,1" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="BorderThickness" Value="1,1,1,1" />
+        </Style>
+
+        <Style x:Key="FormattedTextBox" TargetType="TextBox">
+
+            <Setter Property="Margin" Value="1,1,3,3" />
+            <Setter Property="BorderBrush" Value="Silver" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="MinHeight" Value="19" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        </Style>
+
+        <Style x:Key="FormattedComboBox" TargetType="ComboBox">
+
+            <Setter Property="Margin" Value="1,1,2,2" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="5,1" />
+            <Setter Property="MinHeight" Value="20" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        </Style>
+
+
+
+
+
+
+        <Style TargetType="Menu">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+
+        <Style TargetType="MenuItem">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Padding" Value="3" />
+        </Style>
+
+        <Style x:Key="ButtonTransparent" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="1" />
+        </Style>
+
+        <Style x:Key="FormatBorder" TargetType="Border">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="BorderBrush" Value="Silver" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="Margin" Value="1,1,3,3" />
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        </Style>
+
+
+        <Style TargetType="{x:Type TabItem}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderThickness" Value="0,0,0,3" />
+                    <Setter Property="FontSize" Value="15" />
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="FontStretch" Value="Condensed" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+
+        <Style
+            x:Key="VerticalSeparatorStyle"
+            BasedOn="{StaticResource {x:Type Separator}}"
+            TargetType="{x:Type Separator}">
+            <Setter Property="Margin" Value="6,0,6,0" />
+            <Setter Property="LayoutTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <TransformGroup.Children>
+                            <TransformCollection>
+                                <RotateTransform Angle="90" />
+                            </TransformCollection>
+                        </TransformGroup.Children>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

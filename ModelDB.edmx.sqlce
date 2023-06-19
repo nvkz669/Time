@@ -1,0 +1,156 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 04/11/2017 22:29:15
+-- Generated from EDMX file: d:\KURSOVIK\99035\TiMonSys\TiMonSys\ModelDB.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    ALTER TABLE [ProjectParts] DROP CONSTRAINT [FK_ProjectProjectPart];
+GO
+    ALTER TABLE [Workings] DROP CONSTRAINT [FK_ResponsibleFaceWorking];
+GO
+    ALTER TABLE [Workings] DROP CONSTRAINT [FK_ProjectPartWorking];
+GO
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [ResponsibleFaces];
+GO
+    DROP TABLE [Projects];
+GO
+    DROP TABLE [ProjectParts];
+GO
+    DROP TABLE [Workings];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'ResponsibleFaces'
+CREATE TABLE [ResponsibleFaces] (
+    [Id] int  NOT NULL,
+    [LastName] nvarchar(100)  NULL,
+    [FirstName] nvarchar(100)  NULL,
+    [MiddleName] nvarchar(100)  NULL,
+    [Password] nvarchar(50)  NULL,
+    [IsLocked] bit  NOT NULL,
+    [Role] tinyint  NOT NULL
+);
+GO
+
+-- Creating table 'Projects'
+CREATE TABLE [Projects] (
+    [Id] int  NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [CompletedDate] datetime  NULL
+);
+GO
+
+-- Creating table 'ProjectParts'
+CREATE TABLE [ProjectParts] (
+    [Id] int  NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [ProjectId] int  NOT NULL,
+    [CompletedDate] datetime  NULL
+);
+GO
+
+-- Creating table 'Workings'
+CREATE TABLE [Workings] (
+    [Id] int  NOT NULL,
+    [TimeBegin] datetime  NULL,
+    [TimeEnd] datetime  NULL,
+    [Description] nvarchar(4000)  NULL,
+    [ResponsibleFaceId] int  NOT NULL,
+    [ProjectPartId] int  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [Id] in table 'ResponsibleFaces'
+ALTER TABLE [ResponsibleFaces]
+ADD CONSTRAINT [PK_ResponsibleFaces]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Projects'
+ALTER TABLE [Projects]
+ADD CONSTRAINT [PK_Projects]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'ProjectParts'
+ALTER TABLE [ProjectParts]
+ADD CONSTRAINT [PK_ProjectParts]
+    PRIMARY KEY ([Id] );
+GO
+
+-- Creating primary key on [Id] in table 'Workings'
+ALTER TABLE [Workings]
+ADD CONSTRAINT [PK_Workings]
+    PRIMARY KEY ([Id] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [ProjectId] in table 'ProjectParts'
+ALTER TABLE [ProjectParts]
+ADD CONSTRAINT [FK_ProjectProjectPart]
+    FOREIGN KEY ([ProjectId])
+    REFERENCES [Projects]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectProjectPart'
+CREATE INDEX [IX_FK_ProjectProjectPart]
+ON [ProjectParts]
+    ([ProjectId]);
+GO
+
+-- Creating foreign key on [ResponsibleFaceId] in table 'Workings'
+ALTER TABLE [Workings]
+ADD CONSTRAINT [FK_ResponsibleFaceWorking]
+    FOREIGN KEY ([ResponsibleFaceId])
+    REFERENCES [ResponsibleFaces]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ResponsibleFaceWorking'
+CREATE INDEX [IX_FK_ResponsibleFaceWorking]
+ON [Workings]
+    ([ResponsibleFaceId]);
+GO
+
+-- Creating foreign key on [ProjectPartId] in table 'Workings'
+ALTER TABLE [Workings]
+ADD CONSTRAINT [FK_ProjectPartWorking]
+    FOREIGN KEY ([ProjectPartId])
+    REFERENCES [ProjectParts]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProjectPartWorking'
+CREATE INDEX [IX_FK_ProjectPartWorking]
+ON [Workings]
+    ([ProjectPartId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------
